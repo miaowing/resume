@@ -41,7 +41,7 @@ module.exports = {
       }
     }),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: '!!ejs-webpack-loader!./src/index.ejs',
       filename: "index.html"
     }),
     new MiniCssExtractPlugin({

@@ -7,9 +7,6 @@ module.exports = {
     publicPath: '',
     filename: '[name].js',
   },
-  experiments: {
-    asset: true
-  },
   watch: true,
   resolve: {
     // 加快搜索速度
@@ -32,7 +29,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: '!!ejs-webpack-loader!./src/index.ejs',
       filename: "index.html"
     }),
     new MiniCssExtractPlugin({

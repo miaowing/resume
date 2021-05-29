@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>简历 | 赵峰</title>
+    <base target="_blank">
+</head>
+<body>
+<p class="last-modified">最后更新于2021年6月</p>
+<a class="download-pdf" href="https://resume.mxb.cc/resume.pdf">下载 PDF</a>
+
+<main class="content">
+    <%- require('ejs-webpack-loader!./partials/infos.partial.ejs')() %>
+
+    <div class="content-bd">
+        <%- require('ejs-webpack-loader!./partials/experiences.partial.ejs')() %>
+        <%- require('ejs-webpack-loader!./partials/projects.partial.ejs')() %>
+        <%- require('ejs-webpack-loader!./partials/skills.partial.ejs')() %>
+    </div>
+</main>
+
+<footer class="github-footer">
+    <a class="footer-link" href="https://github.com/miaowing/resume">页面托管在Github Pages上</a>
+</footer>
+</body>
+</html>
