@@ -28,6 +28,7 @@ body {
 a {
   text-decoration: none;
   color: $color-green;
+  padding: 0 2px;
   @include transition(all .2s ease-in-out);
 }
 

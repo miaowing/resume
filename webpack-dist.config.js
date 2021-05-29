@@ -5,7 +5,7 @@ const findChrome = require('chrome-finder');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const EndWebpackPlugin = require('end-webpack-plugin');
-const {WebPlugin} = require('web-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const outputPath = path.resolve(__dirname, 'docs');
@@ -26,12 +26,8 @@ module.exports = {
       {
         test: /\.scss$/,
         // 提取出css
-        loaders: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
+        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
         include: path.resolve(__dirname, 'src')
-      },
-      {
-        test: /\.(gif|png|jpe?g|eot|woff|ttf|svg|pdf)$/,
-        loader: 'base64-inline-loader',
       },
     ]
   },
@@ -44,9 +40,9 @@ module.exports = {
         'NODE_ENV': JSON.stringify('production')
       }
     }),
-    new WebPlugin({
+    new HtmlWebpackPlugin({
       template: './src/index.html',
-      filename: 'index.html',
+      filename: "index.html"
     }),
     new MiniCssExtractPlugin({
       filename: '[name]_[contenthash].css',
@@ -59,7 +55,7 @@ module.exports = {
       // 调用 Chrome 渲染出 PDF 文件
       const chromePath = findChrome();
       spawnSync(chromePath, ['--headless', '--disable-gpu', `--print-to-pdf=${path.resolve(outputPath, 'resume.pdf')}`,
-        'http://resume.mxb.cc' // 这里注意改成你的在线简历的网站
+        'https://resume.mxb.cc' // 这里注意改成你的在线简历的网站
       ]);
     }),
   ]
